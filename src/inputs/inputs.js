@@ -1,10 +1,14 @@
-const Inputs = (props) =>{
-    const {placeholder} = props
-    return (
-        <div className="mt-3">
-            <input type="text" placeholder={placeholder} className="border-2 border-slate-700 outline-none h-10 p-2 w-2/4 text-md"/>
-        </div>
-    )
-}
+const Inputs = (props) => {
+  const { placeholder, onChange, value } = props;
+  return (
+      <input
+        type="text"
+        onChange={onChange}
+        value={value}
+        placeholder={placeholder}
+        className="border-2 border-slate-700 outline-none h-10 p-2 w-80 text-md"
+      />
+  );
+};
 
-export default Inputs
+export default Inputs;
