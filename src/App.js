@@ -11,7 +11,6 @@ function App() {
   const [input, setInput] = useState("");
   const [resultData, setResultData] = useState([]);
   const [submit, setSubmit] = useState(false);
-  const [flag, setFlag] = useState(false);
 
   const placeholder =
     category === "people" ? "Search by Actors Name" : "Search by Shows Name";
@@ -21,24 +20,16 @@ function App() {
     if (input !== "") {
       const url = `https://api.tvmaze.com/search/${category}?q=${input}`;
       const response = await axios.get(url);
-      if (response.data.length > 0) {
-        setResultData(response.data);
-        setFlag(false);
-        setSubmit(true);
-      } else {
-        setFlag(true);
-      }
+      setResultData(response.data);
+      setSubmit(true);
     }
   };
-
-  console.log(flag);
 
   const changeType = (e) => {
     const id = e.target.id;
     setCategory(id);
     setSubmit(false);
     setInput("");
-    setFlag(false);
   };
 
   return (
@@ -94,7 +85,7 @@ function App() {
             </button>
           </form>
         )}
-        {submit!==flag && (
+        {submit && (
           // <div className="flex bg-gradient-to-bl from-slate-500 to-black w-full flex-wrap mt-5 mb-5">
           <div className="flex  w-full flex-wrap mt-5 mb-5">
             {resultData?.map((post) => (
@@ -102,7 +93,7 @@ function App() {
             ))}
           </div>
         )}
-        {flag && <h1 className="text-3xl mt-5 font-semibold">No records...</h1>}
+        {/* {flag && <h1 className="text-3xl mt-5 font-semibold">No records...</h1>} */}
       </div>
     </div>
   );
