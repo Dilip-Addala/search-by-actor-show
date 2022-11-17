@@ -1,13 +1,16 @@
 const Inputs = (props) => {
-  const { placeholder, onChange, value } = props;
+  const { placeholder, onChange, value,type,clicked,classStyle,id,name } = props;
   return (
     <div className="">
       <input
-        type="text"
+        type={type}
         onChange={onChange}
+        name={name}
         value={value}
         placeholder={placeholder}
-        className="placeholder-indigo-500 border-2 border-slate-700 outline-none h-10 p-2 w-80 text-md"
+        onClick={clicked}
+        id={id}
+        className={classStyle}
       />
     </div>
   );

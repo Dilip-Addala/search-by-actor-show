@@ -1,5 +1,3 @@
-import NoImage from "../noImage/Noimg.png";
-
 const Cards = (props) => {
   const { details, category } = props;
   let data;
@@ -26,16 +24,13 @@ const Cards = (props) => {
     }
   }
 
-  //   const emptyCheck = data.img
-
-  const image = data?.image?.medium ? data?.image.medium : NoImage;
   const rating = data?.rating?.average ? data.rating.average : "--";
 
   return (
     <a
       href={data?.url}
       target="blank"
-      className="w-1/5 ring-2 ring-slate ring-offset-white bg-white p-3 rounded-xl mr-5 ml-11 min-h-max overflow-hidden mb-5 mt-5 shadow-2xl"
+      className="md:w-2/5 lg:w-3/12 w-11/12 ring-2 ring-slate ring-offset-white bg-white p-3 rounded-xl mr-5 ml-5 md:ml-11 min-h-max overflow-hidden mb-5 mt-5 shadow-2xl transition ease-in-out delay-50 md:hover:-translate-y-2 md:hover:scale-110  duration-200"
     >
       <div className="flex flex-col items-center w-full border-3 ">
         {data?.name && (
@@ -43,7 +38,7 @@ const Cards = (props) => {
             {data.name}
           </h1>
         )}
-        <img src={image} alt={data?.name} className="w-72 h-52" />
+        <img src={data?.image.medium} alt={data?.name} className="w-72 h-52" />
         {data?.premiered && (
           <h1 className="text-2xl font-bold font-serif mb-3 mt-3 text-slate-600">
             Premiered: {data.premiered}
